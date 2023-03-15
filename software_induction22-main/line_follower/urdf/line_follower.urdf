@@ -1,0 +1,370 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+  <robot
+    name="line_follower" xmlns:xacro="http://www.ros.org/wiki/xacro">  
+     <xacro:include filename="/home/raj/tiburon_ws/src/software_induction22-main/line_follower/urdf/linefollower.gazebo"/>
+     <xacro:property name="camera_link" value="0.05" />
+     <gazebo reference="base_link">
+     <material>Gazebo/Red</material>
+     </gazebo>
+     
+ 
+
+    <link
+      name="base_link">
+      <inertial>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <mass
+          value="17.077406139337" />
+        <inertia
+          ixx="0.352414234716794"
+          ixy="6.99585429874466E-05"
+          ixz="0.0254948458561002"
+          iyy="0.919591127482344"
+          iyz="1.23872342186172E-05"
+          izz="1.21412510283381" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/base_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/base_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <link
+      name="right_link">
+      <inertial>
+        <origin
+          xyz="0.000167903430802641 -0.00972937072003544 0.000566972495614215"
+          rpy="0 0 0" />
+        <mass
+          value="3.18587695163445" />
+        <inertia
+          ixx="0.0132350714812642"
+          ixy="-8.01815850795183E-08"
+          ixz="6.88956172348682E-05"
+          iyy="0.0215472303608317"
+          iyz="-2.70754614250006E-07"
+          izz="0.0134473138664706" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/right_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.529411764705882 0.549019607843137 0.549019607843137 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/right_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="right_joint"
+      type="continuous">
+      <origin
+        xyz="0.4 0.39292 -0.076"
+        rpy="0 0 3.14" />
+      <parent
+        link="base_link" />
+      <child
+        link="right_link" />
+      <axis
+        xyz="0 1 0" />
+      <limit
+        effort="1"
+        velocity="1" />
+    </joint>
+    <link
+      name="left_link">
+      <inertial>
+        <origin
+          xyz="0.000372901594120845 0.0095238516940765 0.00045890497269091"
+          rpy="0 0 0" />
+        <mass
+          value="3.18587695163444" />
+        <inertia
+          ixx="0.0133153059020803"
+          ixy="-1.78077319847682E-07"
+          ixz="0.00012384744099151"
+          iyy="0.0215472303608315"
+          iyz="-2.19147475185428E-07"
+          izz="0.0133670794456544" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/left_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.529411764705882 0.549019607843137 0.549019607843137 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/left_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="left_joint"
+      type="continuous">
+      <origin
+        xyz="0.4 -0.39231 -0.076"
+        rpy="0 0 3.14" />
+      <parent
+        link="base_link" />
+      <child
+        link="left_link" />
+      <axis
+        xyz="0 1 0" />
+      <limit
+        effort="1"
+        velocity="1" />
+    </joint>
+    <link
+      name="caster_link">
+      <inertial>
+        <origin
+          xyz="-0.00863793610964621 -0.000731875926583359 -0.039577183115354"
+          rpy="0 0 0" />
+        <mass
+          value="0.393804040513477" />
+        <inertia
+          ixx="0.000163761928642377"
+          ixy="1.40462826865338E-06"
+          ixz="-2.90717934854712E-05"
+          iyy="0.000147209359571156"
+          iyz="-2.46795156065587E-06"
+          izz="0.000188494753687385" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/caster_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.529411764705882 0.549019607843137 0.549019607843137 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/caster_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="caster_joint"
+      type="continuous">
+      <origin
+        xyz="-0.405 0.00030435 -0.115"
+        rpy="0 0 0" />
+      <parent
+        link="base_link" />
+      <child
+        link="caster_link" />
+      <axis
+        xyz="0 0 -1" />
+      <limit
+        effort="1"
+        velocity="1" />
+    </joint>
+    <link
+      name="caster_link_1">
+      <inertial>
+        <origin
+          xyz="0 -5.55111512312578E-17 0"
+          rpy="0 0 0" />
+        <mass
+          value="0.138183465537126" />
+        <inertia
+          ixx="6.60370952409757E-05"
+          ixy="-3.85070446538693E-06"
+          ixz="-8.90654324687392E-22"
+          iyy="0.000111151859149466"
+          iyz="1.05103599338664E-20"
+          izz="6.5710784191043E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/caster_link_1.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/caster_link_1.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="caster_joint_1"
+      type="continuous">
+      <origin
+        xyz="-0.031466 -0.0026665 -0.082746"
+        rpy="0 0 0" />
+      <parent
+        link="caster_link" />
+      <child
+        link="caster_link_1" />
+      <axis
+        xyz="-0.084438 0.99643 0" />
+      <limit
+        effort="1"
+        velocity="1" />
+    </joint>
+    <link
+      name="camera_link">
+      <inertial>
+        <origin
+          xyz="0.0180021143823427 0.1 -0.00817668591653353"
+          rpy="0 0 0" />
+        <mass
+          value="0.0899154863762026" />
+        <inertia
+          ixx="7.84084393997471E-05"
+          ixy="-3.01384248132955E-21"
+          ixz="-4.89164419382936E-07"
+          iyy="2.3370735734999E-05"
+          iyz="1.76224122725081E-20"
+          izz="6.41503787185048E-05" />
+      </inertial>
+      <visual>
+        <origin
+          xyz="0 -0.09 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/camera_link.STL" />
+        </geometry>
+        <material
+          name="">
+          <color
+            rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+        </material>
+      </visual>
+      <collision>
+        <origin
+          xyz="0 0 0"
+          rpy="0 0 0" />
+        <geometry>
+          <mesh
+            filename="package://line_follower/meshes/camera_link.STL" />
+        </geometry>
+      </collision>
+    </link>
+    <joint
+      name="camera_joint"
+      type="fixed">
+      <origin
+        xyz="-0.17 0 0.2"
+        rpy="0 0.05236 3.14" />
+      <parent
+        link="base_link" />
+      <child
+        link="camera_link" />
+      <axis
+        xyz="0 0 0" />
+      <limit
+        effort="0"
+        velocity="0" />
+    </joint>
+    <gazebo>
+  <plugin name="differential_drive_controller" filename="libgazebo_ros_diff_drive.so">
+
+    <updateRate>30</updateRate>
+
+    <leftJoint>left_joint</leftJoint>
+
+    <rightJoint>right_joint</rightJoint>
+
+    <wheelSeparation>0.5380</wheelSeparation>
+
+    <wheelDiameter>0.2410</wheelDiameter>
+    
+    <wheelAcceleration>1.0</wheelAcceleration>
+
+    <wheelTorque>20</wheelTorque>
+
+    <commandTopic>cmd_vel</commandTopic>
+
+    <odometryTopic>odom</odometryTopic>
+
+    <odometryFrame>odom</odometryFrame>
+
+    <robotBaseFrame>base_footprint</robotBaseFrame>
+
+    <odometrySource>1</odometrySource>
+
+    <publishWheelTF>true</publishWheelTF>
+
+    <publishOdom>true</publishOdom>
+
+    <publishWheelJointState>true</publishWheelJointState>
+
+    <legacyMode>false</legacyMode>
+  </plugin>
+</gazebo>
+
+  </robot>

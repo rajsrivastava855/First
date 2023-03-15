@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<package format="2">
+  <name>line_follower_arena</name>
+  <version>0.0.0</version>
+  <description>The line_follower_arena package</description>
+
+
+  <maintainer email="aman9.rourkela@gmail.com">aman</maintainer>
+
+
+  <license>TODO</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+
+  <build_export_depend>gazebo_ros</build_export_depend>
+
+  <exec_depend>gazebo_ros</exec_depend>
+  
+
+
+
+
+  <export>
+  
+    <gazebo_ros gazebo_model_path="${prefix}/models"/>
+
+    <gazebo_ros gazebo_media_path="${prefix}/models"/>
+
+  </export>
+  
+</package>

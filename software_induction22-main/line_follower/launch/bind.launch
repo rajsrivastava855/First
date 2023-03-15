@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+
+<launch>
+  <arg name="namespace" default="line_follower"/>
+  <arg name="debug" default="0"/>
+  <arg name="robot" default="$(find line_follower)/urdf/line_follower.urdf"/>
+  <arg name="tf_prefix" default="$(optenv ROS_NAMESPACE)"/>
+  <arg name="world_frame" default="world"/>
+  <arg name="base_link_frame" default="$(arg tf_prefix)/base_link"/>
+
+  <arg name="x" default="2.2"/>
+  <arg name="y" default="2.2"/>
+  <arg name="z" default="0.3"/>
+
+  <arg name="R" default="0"/>
+  <arg name="P" default="0"/>
+  <arg name="Y" default="1.7"/>
+
+  <param name="tf_prefix" type="string" value="$(arg tf_prefix)"/>
+  <!-- <param name="robot_description" command="$(find xacro)/xacro '$(arg robot)' base_link_frame:=$(arg base_link_frame) world_frame:=$(arg world_frame)" /> -->
+  <param name="robot_description" command="$(find xacro)/xacro '$(arg robot)' debug:=$(arg debug) namespace:=$(arg namespace) inertial_reference_frame:=world_ned" />
+
+  <node name="spawn_robot" pkg="gazebo_ros" type="spawn_model" output="screen" respawn="false" args="-urdf
+          -param robot_description
+          -model $(arg namespace)
+          -x $(arg x)
+          -y $(arg y)
+          -z $(arg z)
+          -R $(arg R)
+          -P $(arg P)
+          -Y $(arg Y)" />
+</launch>
